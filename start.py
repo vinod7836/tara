@@ -57,6 +57,6 @@ st.set_page_config(
 if st.session_state["logged_in"]:   
     app.core_app()
 else:
-    app.core_app()
-    #auth.render_login()
+    #app.core_app()
+    auth.render_login()
 
