@@ -1,7 +1,7 @@
 ﻿import streamlit as st
 
 USERNAME = "admin"
-PASSWORD = "admin"
+PASSWORD = "WqFJz6p$@O"
 def render_login():
     st.markdown("<h2 style='text-align: center;'>🔐Login</h2>", unsafe_allow_html=True)
 
