@@ -1,4 +1,4 @@
-import streamlit as st
+﻿import streamlit as st
 import main as app
 import auth as auth
 
@@ -54,9 +54,21 @@ st.set_page_config(
 #         unsafe_allow_html=True
 #     )
 
-if st.session_state["logged_in"]:   
+
+##col1, col2 = st.columns([10, 1])
+
+# with col2:
+#     # 3-dot button
+#     with st.expander("⋮", expanded=False):
+#         st.markdown("###")
+#         selected = st.radio("Menu", ["Rerun", "Settings", "Print", "Record a screencast", "About"],label_visibility="hidden")
+
+
+
+if st.session_state.logged_in: 
     app.core_app()
+    #st.text(st.session_state.logged_in)
 else:
-    #app.core_app()
     auth.render_login()
+    #st.text(st.session_state.logged_in)
 

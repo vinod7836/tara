@@ -593,20 +593,21 @@ def core_app():
         # Add model selection input field to the sidebar
         model_provider = st.selectbox(
             "Select your preferred model provider:",
-            ["OpenAI API", "Anthropic API", "Azure OpenAI Service", "Google AI API", "Mistral API", "Groq API", "Ollama", "LM Studio Server"],
+            ["OpenAI API"],
+            ##["OpenAI API", "Anthropic API", "Azure OpenAI Service", "Google AI API", "Mistral API", "Groq API", "Ollama", "LM Studio Server"],
             key="model_provider",
             on_change=on_model_provider_change,
             help="Select the model provider you would like to use. This will determine the models available for selection.",
         )
 
         if model_provider == "OpenAI API":
-            st.markdown(
-            """
-        1. Enter your [OpenAI API key](https://platform.openai.com/account/api-keys) and chosen model below 🔑
-        2. Provide details of the application that you would like to threat model  📝
-        3. Generate a threat list, attack tree and/or mitigating controls for your application 🚀
-        """
-        )
+        #     st.markdown(
+        #     """
+        # 1. Enter your [OpenAI API key](https://platform.openai.com/account/api-keys) and chosen model below 🔑
+        # 2. Provide details of the application that you would like to threat model  📝
+        # 3. Generate a threat list, attack tree and/or mitigating controls for your application 🚀
+        # """
+        # )
             # Add OpenAI API key input field to the sidebar
             openai_api_key = st.text_input(
                 "Enter your OpenAI API key:",
@@ -846,17 +847,17 @@ def core_app():
                 help="Select from Groq's supported models. The Llama 3.3 70B Versatile model is recommended for best results."
             )
 
-        # Add GitHub API key input field to the sidebar
-        github_api_key = st.text_input(
-            "Enter your GitHub API key (optional):",
-            value=st.session_state.get('github_api_key', ''),
-            type="password",
-            help="You can find or create your GitHub API key in your GitHub account settings under Developer settings > Personal access tokens.",
-        )
+        # # Add GitHub API key input field to the sidebar
+        # github_api_key = st.text_input(
+        #     "Enter your GitHub API key (optional):",
+        #     value=st.session_state.get('github_api_key', ''),
+        #     type="password",            
+        #     help="You can find or create your GitHub API key in your GitHub account settings under Developer settings > Personal access tokens.",
+        # )
 
-        # Store the GitHub API key in session state
-        if github_api_key:
-            st.session_state['github_api_key'] = github_api_key
+        # # Store the GitHub API key in session state
+        # if github_api_key:
+        #     st.session_state['github_api_key'] = github_api_key
 
         # Add Advanced Settings section with token limit configuration
         with st.expander("Advanced Settings"):
@@ -979,7 +980,7 @@ def core_app():
     # ------------------ Main App UI ------------------ #
     col1, col2 = st.columns([16.5, 1])
     with col2:
-        st.button("Logout", on_click=auth.logout_button_clicked)
+        st.button("Logout", on_click=auth.logout_button_clicked)        
     #tab1, tab2, tab3, tab4, tab5 = st.tabs(["Threat Model", "Attack Tree", "Mitigations", "DREAD", "Test Cases"])
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["Risk Report", "Exploit Chain", "Countermeasures", "DREAD", "Scenarios"])
 

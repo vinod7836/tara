@@ -23,7 +23,7 @@ def render_login():
 
             username = st.text_input("👤 Username", placeholder="Enter username")
             password = st.text_input("🔑 Password", type="password", placeholder="Enter password")
-
+            #st.text(st.session_state.logged_in)
             login_btn = st.button("Login", use_container_width=True)
             if login_btn:
                 if username == USERNAME and password == PASSWORD:
@@ -37,3 +37,4 @@ def render_login():
 def logout_button_clicked():
     st.session_state.logged_in = False
     st.session_state.do_logout = True
+    st.session_state.clear()
