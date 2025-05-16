@@ -978,7 +978,8 @@ def core_app():
 
 
     # ------------------ Main App UI ------------------ #
-    col1, col2 = st.columns([12, 1])
+    #col1, col2 = st.columns([12, 1])
+    col1, col2 = st.columns([14, 1])
     with col2:
         st.button("Logout", on_click=auth.logout_button_clicked)        
     #tab1, tab2, tab3, tab4, tab5 = st.tabs(["Threat Model", "Attack Tree", "Mitigations", "DREAD", "Test Cases"])
