@@ -978,7 +978,7 @@ def core_app():
 
 
     # ------------------ Main App UI ------------------ #
-    col1, col2 = st.columns([16.5, 1])
+    col1, col2 = st.columns([12, 1])
     with col2:
         st.button("Logout", on_click=auth.logout_button_clicked)        
     #tab1, tab2, tab3, tab4, tab5 = st.tabs(["Threat Model", "Attack Tree", "Mitigations", "DREAD", "Test Cases"])
@@ -1147,7 +1147,7 @@ def core_app():
                             st.warning(f"Error generating threat model. Retrying attempt {retry_count+1}/{max_retries}...")
 
             # Convert the threat model JSON to Markdown
-            markdown_output = json_to_markdown(threat_model, improvement_suggestions)
+            #markdown_output = json_to_markdown(threat_model, improvement_suggestions)
 
             # Display thinking content in an expander if available and using Claude thinking mode
             if ('last_thinking_content' in st.session_state and 
@@ -1158,14 +1158,21 @@ def core_app():
                     st.markdown(st.session_state['last_thinking_content'])
 
             # Display the threat model in Markdown
-            st.markdown(markdown_output)
+            #st.markdown(markdown_output)
         
             # Add a button to allow the user to download the output as a Markdown file
+            # st.download_button(
+            #     label="Download Threat Model",
+            #     data=markdown_output,
+            #     file_name="threat_model.md",
+            #     mime="text/markdown",
+            # )
+            st.json(threat_model)
             st.download_button(
                 label="Download Threat Model",
-                data=markdown_output,
-                file_name="threat_model.md",
-                mime="text/markdown",
+                data=json.dumps(threat_model, indent=4),
+                file_name="threat_model.json",
+                mime="application/json",
             )
         
     # If the submit button is clicked and the user has not provided an application description
