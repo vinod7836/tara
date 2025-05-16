@@ -632,7 +632,7 @@ def core_app():
             """
         1. Enter your [Anthropic API key](https://console.anthropic.com/settings/keys) and chosen model below 🔑
         2. Provide details of the application that you would like to threat model  📝
-        3. Generate a threat list, attack tree and/or mitigating controls for your application 🚀
+        3. Generate a threat list, exploit chain and/or mitigating controls for your application 🚀
         """
         )
             # Add Anthropic API key input field to the sidebar
@@ -659,7 +659,7 @@ def core_app():
             """
         1. Enter your Azure OpenAI API key, endpoint and deployment name below 🔑
         2. Provide details of the application that you would like to threat model  📝
-        3. Generate a threat list, attack tree and/or mitigating controls for your application 🚀
+        3. Generate a threat list, exploit chain and/or counter measures controls for your application 🚀
         """
         )
 
@@ -983,7 +983,7 @@ def core_app():
     with col2:
         st.button("Logout", on_click=auth.logout_button_clicked)        
     #tab1, tab2, tab3, tab4, tab5 = st.tabs(["Threat Model", "Attack Tree", "Mitigations", "DREAD", "Test Cases"])
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Risk Report", "Exploit Chain", "Countermeasures", "DREAD", "Scenarios"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Risk Report", "Exploit Chain", "Counter measures", "DREAD", "Scenarios"])
 
     with tab1:
         st.markdown("""
@@ -1186,7 +1186,7 @@ def core_app():
 
     with tab2:
         st.markdown("""
-    Attack trees are a structured way to analyse the security of a system. They represent potential attack scenarios in a hierarchical format, 
+    Exploit chain are a structured way to analyse the security of a system. They represent potential attack scenarios in a hierarchical format, 
     with the ultimate goal of an attacker at the root and various paths to achieve that goal as branches. This helps in understanding system 
     vulnerabilities and prioritising mitigation efforts.
     """)
@@ -1198,7 +1198,7 @@ def core_app():
                 st.warning("⚠️ Users may encounter syntax errors when generating attack trees using local LLMs. Experiment with different local LLMs to assess their output quality, or consider using a hosted model provider to generate attack trees.")
         
             # Create a submit button for Attack Tree
-            attack_tree_submit_button = st.button(label="Generate Attack Tree")
+            attack_tree_submit_button = st.button(label="Generate Exploit Chain")
         
             # If the Generate Attack Tree button is clicked and the user has provided an application description
             if attack_tree_submit_button and st.session_state.get('app_input'):
@@ -1211,7 +1211,7 @@ def core_app():
                     st.session_state.pop('last_thinking_content', None)
 
                 # Show a spinner while generating the attack tree
-                with st.spinner("Generating attack tree..."):
+                with st.spinner("Generating exploit chain..."):
                     try:
                         # Call the relevant get_attack_tree function with the generated prompt
                         if model_provider == "Azure OpenAI Service":
@@ -1283,14 +1283,14 @@ def core_app():
 
     with tab3:
         st.markdown("""
-    Use this tab to generate potential mitigations for the threats identified in the threat model. Mitigations are security controls or
-    countermeasures that can help reduce the likelihood or impact of a security threat. The generated mitigations can be used to enhance
+    Use this tab to generate potential counter measures for the threats identified in the threat model. Counter measures are security controls or
+    counter measures that can help reduce the likelihood or impact of a security threat. The generated counter measures can be used to enhance
     the security posture of the application and protect against potential attacks.
     """)
         st.markdown("""---""")
     
         # Create a submit button for Mitigations
-        mitigations_submit_button = st.button(label="Suggest Mitigations")
+        mitigations_submit_button = st.button(label="Counter Measures")
 
         # If the Suggest Mitigations button is clicked and the user has identified threats
         if mitigations_submit_button:
@@ -1467,7 +1467,7 @@ def core_app():
         st.markdown("""---""")
                 
         # Create a submit button for Test Cases
-        test_cases_submit_button = st.button(label="Generate Test Cases")
+        test_cases_submit_button = st.button(label="Generate Test Scenarios")
 
         # If the Generate Test Cases button is clicked and the user has identified threats
         if test_cases_submit_button:
