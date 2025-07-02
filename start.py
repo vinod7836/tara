@@ -14,7 +14,14 @@ st.set_page_config(
     initial_sidebar_state="expanded"
     )
 
-
+# Inject custom CSS
+st.markdown("""
+    <style>
+        ._profileContainer_gzau3_53 {
+            display: none !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 # st.markdown(
 #         """
 #         <style>
