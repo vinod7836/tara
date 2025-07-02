@@ -19,7 +19,14 @@ from mitigations import create_mitigations_prompt, get_mitigations, get_mitigati
 from test_cases import create_test_cases_prompt, get_test_cases, get_test_cases_azure, get_test_cases_google, get_test_cases_mistral, get_test_cases_ollama, get_test_cases_anthropic, get_test_cases_lm_studio, get_test_cases_groq
 from dread import create_dread_assessment_prompt, get_dread_assessment, get_dread_assessment_azure, get_dread_assessment_google, get_dread_assessment_mistral, get_dread_assessment_ollama, get_dread_assessment_anthropic, get_dread_assessment_lm_studio, get_dread_assessment_groq, dread_json_to_markdown
 
-
+# Inject custom CSS
+st.markdown("""
+    <style>
+        ._profileContainer_gzau3_53 {
+            display: none !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 def core_app():
 
     # ------------------ Helper Functions ------------------ #
